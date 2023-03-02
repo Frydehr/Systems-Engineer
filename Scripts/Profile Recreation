@@ -2,7 +2,7 @@
 
 Use this to recreate a user profile with a backup of the current profile
 
-Author: Spencer McConnell
+Author: N/A
 
 #>
 #$location=[environment]::GetFolderPath('UserProfile')
