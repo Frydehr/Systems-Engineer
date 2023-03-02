@@ -1,7 +1,7 @@
 <#
 Use this script to create a remote PS Session 								
 	
-Author: Spencer McConnell											
+Author: N/A											
 
 Run "$PSVersionTable" to confirm PSVersion 5 or greater.
 
