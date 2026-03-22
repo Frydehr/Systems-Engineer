@@ -1,28 +1,45 @@
-#Use this script to Send a Basic Notification E-mail.		 		#
-																	#
-#Author: Spencer McConnell											#
-																	#
-#Don't forget to set VARIABLES 1st! 								#
-																	#
-#Run "Set-ExecutionPolicy unrestricted" to enable PS scripts.		#
-																	#
-#Run "$PSVersionTable" to confirm PSVersion 3 or greater.			#
-#####################################################################
+<#
+.SYNOPSIS
+    Sends a basic email notification via SMTP.
 
-$SmtpServer = "Server"	
+.DESCRIPTION
+    A standardized script for sending automated alerts. 
+    Note: Ensure your SMTP relay allows connections from this host.
 
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#
-#|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||#
-#                        SET VARIABLES ABOVE!                       #
+.PARAMETER SmtpServer
+    The FQDN or IP of your mail server.
+#>
 
-Write-Host "Only Continue if you Set the VARIABLES" -ForegroundColor Magenta
-Pause
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$SmtpServer = "smtp.yourserver.com",
 
-$EmailFrom = Read-Host -Prompt "Enter the From E-mail Address and press enter"					#<---- Keep as read host to allow script to prompt or replace it with desired value. 
-$EmailTo = Read-Host -Prompt "Enter the To E-mail Address and press enter"						#<---- Keep as read host to allow script to prompt or replace it with desired value.
-$EmailSubject = Read-Host -Prompt "Enter the subject line then and press enter"					#<---- Keep as read host to allow script to prompt or replace it with desired value.
-$EmailBody = Read-Host -Prompt "Enter the body of your message here then press enter to send"	#<---- Keep as read host to allow script to prompt or replace it with desired value.
+    [Parameter(Mandatory=$true)]
+    [string]$To,
 
-Write-Host "Sent Message - check e-mail to confirm."
+    [Parameter(Mandatory=$true)]
+    [string]$From,
 
-Send-MailMessage -SMTPServer $SmtpServer -to $EmailTo -from $EmailFrom -Subject $EmailSubject -body $EmailBody
+    [Parameter(Mandatory=$true)]
+    [string]$Subject,
+
+    [Parameter(Mandatory=$false)]
+    [string]$Body = "Default System Notification Body"
+)
+
+try {
+    Write-Host "Attempting to send email to $To..." -ForegroundColor Cyan
+    
+    # Note: Send-MailMessage is deprecated; consider Graph API for M365 environments.
+    Send-MailMessage -SmtpServer $SmtpServer `
+                     -To $To `
+                     -From $From `
+                     -Subject $Subject `
+                     -Body $Body `
+                     -ErrorAction Stop
+
+    Write-Host "Success: Message sent." -ForegroundColor Green
+}
+catch {
+    Write-Error "Failed to send email. Error: $_"
+}
