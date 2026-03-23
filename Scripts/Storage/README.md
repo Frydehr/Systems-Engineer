@@ -1,6 +1,6 @@
 ### 💾 Storage Management
-The `New-UnityLun.ps1` script provisions storage on EMC Unity arrays.
-
-**Example Usage:**
-```powershell
-.\Scripts\Storage\New-UnityLun.ps1 -LunName "SQL_Data_01" -LunSize 500GB -Hosts "Host_1","Host_2","Host_3"
+* **`New-UnityLun.ps1`**: Provisions storage on EMC Unity arrays.
+* **`Get-StorageReport.ps1`**: Capacity auditing with threshold warnings.
+* **`Invoke-SnapshotCleanup.ps1`**: Management of aged Hyper-V checkpoints.
+* **`New-FolderQuota.ps1`**: FSRM-based limit enforcement for file shares.
+* **`Mount-NetworkShare.ps1`**: Robust mapping of remote file resources.
