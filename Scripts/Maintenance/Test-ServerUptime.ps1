@@ -1,18 +1,44 @@
 <#
 .SYNOPSIS
-    Calculates system uptime and warns if it exceeds a threshold.
+    Reports system uptime for local or remote computers.
+.DESCRIPTION
+    Retrieves the last boot time, calculates total uptime, and returns a 
+    custom object with status levels for reporting.
+.PARAMETER ComputerName
+    The target system(s) to check. Defaults to localhost.
 .PARAMETER MaxDays
-    The number of days allowed before a warning is issued (Default: 30).
+    Uptime threshold before marking as 'Critical'. Default is 30 days.
 #>
-param([int]$MaxDays = 30)
+param(
+    [Parameter(ValueFromPipeline=$true)]
+    [string[]]$ComputerName = "localhost",
+    
+    [int]$MaxDays = 30
+)
 
-$LastBoot = (Get-CimInstance -ClassName Win32_OperatingSystem).LastBootUpTime
-$Uptime = (Get-Date) - $LastBoot
+process {
+    foreach ($Computer in $ComputerName) {
+        try {
+            $OS = Get-CimInstance -ClassName Win32_OperatingSystem -ComputerName $Computer -ErrorAction Stop
+            $LastBoot = $OS.LastBootUpTime
+            $Uptime   = (Get-Date) - $LastBoot
 
-Write-Host "System Uptime: $($Uptime.Days) Days, $($Uptime.Hours) Hours." -ForegroundColor Cyan
+            # Determine Status Level
+            $Status = if ($Uptime.Days -ge $MaxDays) { "Critical" } else { "Healthy" }
 
-if ($Uptime.Days -gt $MaxDays) {
-    Write-Host "CRITICAL: Server uptime exceeds $MaxDays days! Reboot recommended." -ForegroundColor Red
-} else {
-    Write-Host "Uptime is within acceptable limits." -ForegroundColor Green
+            # Create an Object (This is what makes it "Professional")
+            [PSCustomObject]@{
+                ComputerName = $Computer
+                LastBoot     = $LastBoot
+                UptimeDays   = $Uptime.Days
+                UptimeTotal  = "$($Uptime.Days)d $($Uptime.Hours)h $($Uptime.Minutes)m"
+                Status       = $Status
+                Threshold    = $MaxDays
+                Timestamp    = Get-Date
+            }
+        }
+        catch {
+            Write-Warning "Failed to connect to $Computer: $($_.Exception.Message)"
+        }
+    }
 }
