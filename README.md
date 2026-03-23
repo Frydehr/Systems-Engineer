@@ -22,43 +22,43 @@ The root of this repository contains `Invoke-DailyHealthCheck.ps1`. This control
 * **Server Hardening**: Disables legacy protocols (SMBv1/LLMNR).
 * **TLS Audit**: Identifies non-compliant encryption standards (TLS 1.0/1.1).
 
-### 🖥️ [Virtualization & Clustering](./scripts/virtualization/)
+### 🖥️ [Virtualization & Clustering](./Scripts/Virtualization/)
 *Focus: Hyper-V Fabric Management & Optimization.*
 * **HA Provisioning**: Automates Clustered VM deployment.
 * **Live Migration**: Orchestrates zero-downtime host maintenance.
 * **Orphaned Disk Discovery**: Reclaims "Ghost Storage" from CSVs.
 
-### 💾 [Storage Management](./scripts/storage/)
+### 💾 [Storage Management](./Scripts/Storage/)
 *Focus: SAN Provisioning & Capacity Planning.*
 * **Unity LUN Provisioning**: Standardized EMC Unity storage automation.
 * **Capacity Reporting**: Early-warning systems for disk exhaustion.
 * **Snapshot Cleanup**: Automated aging of checkpoints to prevent volume stun.
 
-### 🧪 [Disaster Recovery & Validation](./scripts/recovery/)
+### 🧪 [Disaster Recovery & Validation](./Scripts/Recovery/)
 *Focus: Resilience & Verification.*
 * **Backup Integrity**: Validates file headers/metadata to prevent "Silent Failure."
 * **AD Recycle Bin**: Rapid identity recovery workflows for accidental deletions.
 * **DHCP Export**: Config backups for critical networking roles.
 
-### ☁️ [Hybrid / Cloud Bridge](./scripts/hybrid/)
+### ☁️ [Hybrid / Cloud Bridge](./Scripts/Hybrid/)
 *Focus: Entra ID (Azure AD) & M365 Integration.*
 * **Delta Sync**: Immediate on-prem to cloud identity updates via AD Connect.
 * **License Audit**: Cost-optimization by identifying unused M365 accounts.
 * **Hybrid Connectivity**: Latency and port testing for VPN/ExpressRoute tunnels.
 
-### 🛠️ [System Maintenance](./scripts/maintenance/)
+### 🛠️ [System Maintenance](./Scripts/Maintenance/)
 *Focus: Automated Hygiene.*
 * **Patch Management**: Orchestrated Windows Updates and reboots.
 * **Self-Healing Services**: Monitors and restarts failed auto-start services.
 * **Uptime Tracking**: Flags systems requiring maintenance reboots.
 
-### 📧 [Mail & Notifications](./scripts/notifications/)
+### 📧 [Mail & Notifications](./Scripts/Notifications/)
 *Focus: Communication & Alerting.*
 * **HTML Reporting**: Programmatic conversion of PS Objects to clean tables.
 * **Critical Alerts**: High-priority notification for system failures.
 * **Queue Monitoring**: Ensures reliability of the notification path.
 
-### ⚙️ [General Utilities](./scripts/utility/)
+### ⚙️ [General Utilities](./Scripts/Utility/)
 *Focus: Standardized Admin Tools.*
 * **System Inventory**: Instant hardware/Serial Number/OS spec reporting.
 * **Text Search**: Recursive log analysis for rapid troubleshooting.
