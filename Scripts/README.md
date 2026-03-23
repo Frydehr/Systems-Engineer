@@ -16,7 +16,7 @@ The root of this repository contains `Invoke-DailyHealthCheck.ps1`. This control
 
 ## 📂 Core Modules
 
-### 🛡️ [Security & Compliance](./scripts/security/)
+### 🛡️ [Security & Compliance](./scripts/Security/)
 *Focus: Attack Surface Reduction & Auditing.*
 * **Local Admin Inventory**: Detects "Permission Creep" across the fleet.
 * **Server Hardening**: Disables legacy protocols (SMBv1/LLMNR).
