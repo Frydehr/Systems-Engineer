@@ -1,0 +1,17 @@
+{
+    "GlobalSettings": {
+        "CompanyName": "CONTOSO-IT",
+        "Environment": "Production"
+    },
+    "EmailSettings": {
+        "SmtpServer": "smtp.office365.com",
+        "Port": 587,
+        "FromAddress": "automation@yourdomain.com",
+        "ToAddress": "admin@yourdomain.com",
+        "UseSSL": true
+    },
+    "Infrastructure": {
+        "MaxUptimeDays": 30,
+        "LowDiskThresholdGB": 10
+    }
+}
