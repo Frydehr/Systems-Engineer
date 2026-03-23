@@ -8,15 +8,15 @@ A comprehensive, production-ready automation framework designed for **Senior/Pri
 The root of this repository contains `Invoke-DailyHealthCheck.ps1`. This controller orchestrates the various modules to generate a unified daily status report, ensuring "Single Pane of Glass" visibility into infrastructure health.
 
 ### 📋 Executive Summary Features:
-* **Automated Reporting**: Aggregates data into a professional HTML email.
+* **Automated Reporting**: Aggregates data into a professional HTML email dashboard.
 * **Modular Design**: Each script can be run independently or as part of the suite.
-* **Cross-Platform Readiness**: Supports On-Prem (Hyper-V/Unity) and Cloud (Entra ID/M365).
+* **Environment Agnostic**: Uses a centralized `Configs/` layer for easy portability across environments.
 
 ---
 
 ## 📂 Core Modules
 
-### 🛡️ [Security & Compliance](./Scripts/Security)
+### 🛡️ [Security & Compliance](./Scripts/Security/)
 *Focus: Attack Surface Reduction & Auditing.*
 * **Local Admin Inventory**: Detects "Permission Creep" across the fleet.
 * **Server Hardening**: Disables legacy protocols (SMBv1/LLMNR).
@@ -36,7 +36,7 @@ The root of this repository contains `Invoke-DailyHealthCheck.ps1`. This control
 
 ### 🧪 [Disaster Recovery & Validation](./Scripts/Recovery/)
 *Focus: Resilience & Verification.*
-* **Backup Integrity**: Validates file headers/metadata to prevent "Silent Failure."
+* **Backup Integrity**: Validates file headers to prevent "Silent Failure."
 * **AD Recycle Bin**: Rapid identity recovery workflows for accidental deletions.
 * **DHCP Export**: Config backups for critical networking roles.
 
@@ -48,14 +48,14 @@ The root of this repository contains `Invoke-DailyHealthCheck.ps1`. This control
 
 ### 🛠️ [System Maintenance](./Scripts/Maintenance/)
 *Focus: Automated Hygiene.*
-* **Patch Management**: Orchestrated Windows Updates and reboots.
+* **Test-ServerUptime.ps1**: Flags systems requiring maintenance reboots to resolve "Ghost Issues."
 * **Self-Healing Services**: Monitors and restarts failed auto-start services.
-* **Uptime Tracking**: Flags systems requiring maintenance reboots.
+* **Patch Management**: Orchestrated Windows Updates and reboot scheduling.
 
 ### 📧 [Mail & Notifications](./Scripts/Notifications/)
 *Focus: Communication & Alerting.*
-* **HTML Reporting**: Programmatic conversion of PS Objects to clean tables.
-* **Critical Alerts**: High-priority notification for system failures.
+* **HTML Reporting**: Programmatic conversion of PS Objects to clean, CSS-styled tables.
+* **Critical Alerts**: High-priority notification logic for system failures.
 * **Queue Monitoring**: Ensures reliability of the notification path.
 
 ### ⚙️ [General Utilities](./Scripts/Utility/)
@@ -73,6 +73,13 @@ The root of this repository contains `Invoke-DailyHealthCheck.ps1`. This control
 * RSAT Modules (Active Directory, Hyper-V, Failover Cluster)
 * Microsoft Graph PowerShell SDK (for Cloud modules)
 
-### 2. Deployment
-1. **Clone the Repo:** ```powershell
+### 2. Configuration
+1. Navigate to the `Configs/` folder.
+2. Rename `settings.sample.json` to `settings.json`.
+3. Update the `SmtpServer` and `ToAddress` with your environment details.
+4. Add target hostnames/IPs to `servers.txt`.
+
+### 3. Deployment
+1. **Clone the Repo:**
+   ```powershell
    git clone [https://github.com/your-username/Systems-Engineering-Toolkit.git](https://github.com/your-username/Systems-Engineering-Toolkit.git)
