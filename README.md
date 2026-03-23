@@ -75,9 +75,9 @@ The root of this repository contains `Invoke-DailyHealthCheck.ps1`. This control
 
 ### 2. Configuration
 1. Navigate to the `Configs/` folder.
-2. Rename `settings.sample.json` to `settings.json`.
+2. Rename `Settings.Sample.json` to `Settings.json`.
 3. Update the `SmtpServer` and `ToAddress` with your environment details.
-4. Add target hostnames/IPs to `servers.txt`.
+4. Add target hostnames/IPs to `Servers.txt`.
 
 ### 3. Deployment
 1. **Clone the Repo:**
