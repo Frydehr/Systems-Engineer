@@ -1,0 +1,4 @@
+[2026-03-21 08:00:01] INFO: Starting Daily Health Check...
+[2026-03-21 08:00:15] WARNING: SRV-SQL-01 did not respond to Ping.
+[2026-03-21 08:00:15] ERROR: Failed to reach 1 target server(s).
+[2026-03-21 08:01:22] INFO: Report sent with 1 critical alert.
