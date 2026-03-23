@@ -17,8 +17,8 @@ This module automates the "Hygiene" tasks of a Systems Engineer. By moving these
 * **Value:** Acts as a first-responder for critical application services, increasing the "Self-Healing" capability of the infrastructure.
 
 ### 4. Test-ServerUptime.ps1
-* **Purpose:** Identifies systems that have been running for excessive periods without a reboot.
-* **Value:** Flags potential "Ghost Issues" where pending updates or memory leaks may be degrading system stability.
+* **Purpose:** Calculates the time since the last OS boot and compares it against a defined threshold.
+* **Value:** Identifies "Ghost Issues" where pending updates, kernel-level memory leaks, or driver instability may be degrading performance. It returns a structured object, allowing for automated reboot scheduling.
 
 ### 5. Backup-EventLogs.ps1
 * **Purpose:** Archives and clears System, Application, and Security event logs.
