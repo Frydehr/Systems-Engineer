@@ -1,0 +1,8 @@
+# Ignore actual configuration with private data
+Configs/settings.json
+Configs/servers.txt
+
+# Ignore local logs generated during runs
+Logs/
+*.log
+*.html
