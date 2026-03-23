@@ -1,0 +1,5 @@
+[2026-03-22 08:00:01] INFO: Starting Daily Health Check...
+[2026-03-22 08:00:05] INFO: Loading Config from ./Configs/settings.json
+[2026-03-22 08:01:10] SUCCESS: 12/12 Servers Responded.
+[2026-03-22 08:05:44] INFO: HTML Report generated and emailed to admin@domain.com.
+[2026-03-22 08:05:45] INFO: Script Execution Completed.
